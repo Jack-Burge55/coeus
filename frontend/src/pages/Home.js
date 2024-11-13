@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../UserContext";
 import * as constants from "../constants";
 import { VideoTile } from "../components";
 
 const Home = () => {
+  const { coeusUser } = useContext(UserContext);
   const [recentVideos, setRecentVideos] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
   const [videoPage, setVideoPage] = useState(1);
@@ -11,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     try {
       const url = new URL(
-        `${constants.usedUrl}/api/v1/videos/all?limit=5&page=${videoPage}`
+        `${constants.usedUrl}/api/v1/videos/all-other?limit=5&page=${videoPage}`
       );
       fetch(url, {
         method: "GET",
@@ -38,7 +40,7 @@ const Home = () => {
           }
         });
     } catch (error) {}
-  }, [videoPage]);
+  }, [videoPage, coeusUser]);
 
   return (
     <div>
@@ -56,8 +58,8 @@ const Home = () => {
                 majorTopics={video.majorTopics}
                 minorTopics={video.minorTopics}
                 likeCount={video.likeCount}
-                usersOwn={video.uploadedBy === localStorage.userId}
                 uploadedByName={video.uploadedByName}
+                uploadedBy={video.uploadedBy}
               />
             );
           })}

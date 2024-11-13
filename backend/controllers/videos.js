@@ -11,11 +11,27 @@ const getAllVideosByUser = async (req, res) => {
   res.status(StatusCodes.OK).json({videos, count: videos.length})
 }
 
-const getAllVideosByLike = async (req, res) => {
-  const userId =req.user.userId
+const getAllVideosByLike = async (req, res, next) => {
+  const userId = req.user.userId
   const videos = await Video.find({ likedBy: userId})
   if (!videos) {
     return next(new BadRequestError(`No videos liked by ${userId} found`))
+  }
+  res.status(StatusCodes.OK).json({videos})
+}
+
+const getAllVideosByTopic = async (req, res, next) => {
+  const {
+    params: {topic}
+  } = req
+  // Example Input Topic: linguistics-and-language
+  // Example Topic: Linguistics And Language
+  const searchTopic = topic?.split("-").map((word) => {
+    return word[0].toUpperCase() + word.slice(1);
+  }).join(" ");
+  const videos = await Video.find({ majorTopics: searchTopic})
+  if (!videos.length) {
+    return next(new BadRequestError(`No videos with topic ${searchTopic} found`))
   }
   res.status(StatusCodes.OK).json({videos})
 }
@@ -28,6 +44,20 @@ const getAllVideos = async (req, res) => {
 
   const videos = await Video.find({}).skip(skip).limit(limit).sort({"createdAt": -1})
   if (!videos) {
+    return next(new BadRequestError(`No videos found`))
+  }
+
+  res.status(StatusCodes.OK).json({videos})
+}
+
+const getAllOtherVideos = async (req, res, next) => {
+  // get videos with newest first from other users
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 10;
+  const skip = (page - 1) * limit;
+
+  const videos = await Video.find({ uploadedBy: {$ne: req.user.userId} }).skip(skip).limit(limit).sort({"createdAt": -1})
+  if (!videos.length) {
     return next(new BadRequestError(`No videos found`))
   }
 
@@ -66,7 +96,9 @@ const deleteVideo = async (req, res, next) => {
 module.exports = {
   getAllVideosByUser,
   getAllVideosByLike,
+  getAllVideosByTopic,
   getAllVideos,
+  getAllOtherVideos,
   getVideo,
   uploadVideo,
   deleteVideo
