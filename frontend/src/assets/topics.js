@@ -284,7 +284,7 @@ const topics = [
     ],
   },
   {
-    "name": "Linguistics and languages",
+    "name": "Linguistics And Languages",
     "subs": [
       "Arabic literature",
       "Varieties of Arabic",
@@ -506,7 +506,7 @@ const topics = [
     ],
   },
   {
-    "name": "Culinary arts",
+    "name": "Culinary Arts",
     "subs": [
       "Acquired taste",
       "Aftertaste",
@@ -577,7 +577,7 @@ const topics = [
     ],
   },
   {
-    "name": "Performing arts",
+    "name": "Performing Arts",
     "subs": [
       {
         "name": "Music",
@@ -676,7 +676,7 @@ const topics = [
     ],
   },
   {
-    "name": "Visual arts",
+    "name": "Visual Arts",
     "subs": [
       "Craft",
       "Fine arts",
@@ -817,7 +817,7 @@ const topics = [
     ],
   },
   {
-    "name": "Interdisciplinary studies",
+    "name": "Interdisciplinary Studies",
     "subs": [
       {
         "name": "Area studies",
@@ -902,7 +902,7 @@ const topics = [
     ],
   },
   {
-    "name": "Political science",
+    "name": "Political Science",
     "subs": [
       "American politics",
       "Canadian politics",
@@ -1383,7 +1383,7 @@ const topics = [
     ],
   },
   {
-    "name": "Earth sciences",
+    "name": "Earth Sciences",
     "subs": [
       "Atmospheric science",
       "Climatology",
@@ -1583,7 +1583,7 @@ const topics = [
     ],
   },
   {
-    "name": "Space sciences",
+    "name": "Space Sciences",
     "subs": [
       {
         "name": "Aerospace engineering",
@@ -1713,7 +1713,7 @@ const topics = [
     ],
   },
   {
-    "name": "Computer sciences",
+    "name": "Computer Sciences",
     "subs": [
       {
         "name": "Theory of computation",
@@ -2143,7 +2143,7 @@ const topics = [
     ],
   },
   {
-    "name": "Systems science",
+    "name": "Systems Science",
     "subs": [
       "Network science",
       "Chaos theory",
@@ -2266,7 +2266,7 @@ const topics = [
     ],
   },
   {
-    "name": "Architecture and design",
+    "name": "Architecture And Design",
     "subs": [
       {
         "name": "Architecture",
@@ -2437,7 +2437,7 @@ const topics = [
     ],
   },
   {
-    "name": "Engineering and technology",
+    "name": "Engineering And Technology",
     "subs": [
       {
         "name": "Chemical engineering",
@@ -2575,7 +2575,7 @@ const topics = [
     ],
   },
   {
-    "name": "Environmental studies and forestry",
+    "name": "Environmental Studies And Forestry",
     "subs": [
       {
         "name": "Environmental management",
@@ -2601,7 +2601,7 @@ const topics = [
     ],
   },
   {
-    "name": "Family and consumer science",
+    "name": "Family And Consumer Science",
     "subs": [
       "Consumer education",
       "Housing",
@@ -2614,7 +2614,7 @@ const topics = [
     ],
   },
   {
-    "name": "Human physical performance and recreation",
+    "name": "Human Physical Performance And Recreation",
     "subs": [
       "Biomechanics / Sports biomechanics",
       "Sports coaching",
@@ -2656,7 +2656,7 @@ const topics = [
     ],
   },
   {
-    "name": "Journalism, media studies and communication",
+    "name": "Journalism Media Studies And Communication",
     "subs": [
       {
         "name": "Journalism",
@@ -2772,7 +2772,7 @@ const topics = [
     ],
   },
   {
-    "name": "Library and museum studies",
+    "name": "Library And Museum Studies",
     "subs": [
       "Archival science",
       "Archivist",
@@ -2850,7 +2850,7 @@ const topics = [
     ],
   },
   {
-    "name": "Medicine and health",
+    "name": "Medicine And Health",
     "subs": [
       "Alternative medicine",
       "Anesthesiology",
@@ -2990,7 +2990,7 @@ const topics = [
     ],
   },
   {
-    "name": "Military sciences",
+    "name": "Military Sciences",
     "subs": [
       "Amphibious warfare",
       "Artillery",
@@ -3157,7 +3157,7 @@ const topics = [
     ],
   },
   {
-    "name": "Public administration",
+    "name": "Public Administration",
     "subs": [
       "Civil service",
       "Corrections",
@@ -3250,7 +3250,7 @@ const topics = [
     ],
   },
   {
-    "name": "Social work",
+    "name": "Social Work",
     "subs": [
       "Child welfare",
       {

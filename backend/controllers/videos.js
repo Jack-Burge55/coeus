@@ -24,9 +24,14 @@ const getAllVideosByTopic = async (req, res, next) => {
   const {
     params: {topic}
   } = req
-  const videos = await Video.find({ majorTopics: topic})
+  // Example Input Topic: linguistics-and-language
+  // Example Topic: Linguistics And Language
+  const searchTopic = topic?.split("-").map((word) => {
+    return word[0].toUpperCase() + word.slice(1);
+  }).join(" ");
+  const videos = await Video.find({ majorTopics: searchTopic})
   if (!videos.length) {
-    return next(new BadRequestError(`No videos with topic ${topic} found`))
+    return next(new BadRequestError(`No videos with topic ${searchTopic} found`))
   }
   res.status(StatusCodes.OK).json({videos})
 }

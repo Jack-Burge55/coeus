@@ -463,6 +463,7 @@ const Profile = () => {
                     likeCount={video.likeCount}
                     usersOwn={usersProfile}
                     uploadedByName={video.uploadedByName}
+                    uploadedBy={usersProfile && video.uploadedBy}
                   ></VideoTile>
                 </div>
               );

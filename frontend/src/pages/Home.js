@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../UserContext";
 import * as constants from "../constants";
 import { VideoTile } from "../components";
 
 const Home = () => {
+  const { coeusUser } = useContext(UserContext);
   const [recentVideos, setRecentVideos] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
   const [videoPage, setVideoPage] = useState(1);
@@ -38,7 +40,7 @@ const Home = () => {
           }
         });
     } catch (error) {}
-  }, [videoPage]);
+  }, [videoPage, coeusUser]);
 
   return (
     <div>
@@ -57,6 +59,7 @@ const Home = () => {
                 minorTopics={video.minorTopics}
                 likeCount={video.likeCount}
                 uploadedByName={video.uploadedByName}
+                uploadedBy={video.uploadedBy}
               />
             );
           })}

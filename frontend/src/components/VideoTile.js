@@ -1,15 +1,17 @@
-import { useContext } from "react";
-
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
+
 import Video from "./Video";
 
 import toggleLikeVideo from "../userApi/toggleLikeVideo";
 import getUser from "../userApi/getUser";
 import * as constants from "../constants";
 
-const VideoTile = ({ url, videoId, majorTopics, minorTopics, likeCount, usersOwn, uploadedByName }) => {
+const VideoTile = ({ url, videoId, majorTopics, minorTopics, likeCount, usersOwn, uploadedByName, uploadedBy }) => {
+  const navigate = useNavigate();
   const { coeusUser, setCoeusUser } = useContext(UserContext);
-  const action = !coeusUser.likedVideos.includes(videoId);
+  const [userLikesVideo, setUserLikesVideo] = useState(coeusUser.likedVideos.includes(videoId))  
 
   // call delete video API
   const deleteVideo = async (videoId) => {
@@ -42,12 +44,15 @@ const VideoTile = ({ url, videoId, majorTopics, minorTopics, likeCount, usersOwn
       ></Video>
       {!usersOwn && (
         <div>
-          <button
-            onClick={() =>
-              toggleLikeVideo(videoId, setCoeusUser, action ? "like" : "unlike")
+            {uploadedBy && <button onClick={() => navigate(`/profile/${uploadedBy}`)}>Go To Profile</button>}
+            <button
+            onClick={() => {
+              toggleLikeVideo(videoId, setCoeusUser, !userLikesVideo ? "like" : "unlike")
+              setUserLikesVideo(!userLikesVideo);              
+              }
             }
           >
-            {action ? "Like Video" : "Unlike Video"}
+            {userLikesVideo ? "Unlike Video" : "Like Video"}
           </button>
         </div>
       )}

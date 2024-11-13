@@ -8,7 +8,6 @@ const toggleLikeVideo = async (videoId, setCoeusUser, action) => {
   const url = new URL(
     `${constants.usedUrl}/api/v1/users/${action}/${videoId}`
   );
-  console.log(action);
   
   await fetch(url, {
     method: "PATCH",
@@ -20,7 +19,7 @@ const toggleLikeVideo = async (videoId, setCoeusUser, action) => {
     .then((response) => {      
       if (response.status !== 200) {
         throw new Error("No video found");
-      }      
+      }
       getUser(setCoeusUser)
     })
     .catch((err) => {
